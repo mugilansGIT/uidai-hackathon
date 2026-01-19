@@ -1,144 +1,47 @@
-This document records the exact work completed so far in Power BI
-
-1.Objective
-
--> Load multiple CSV datasets
-
--> Clean and standardize data
-
--> Combine related datasets into a single integrated Master table
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-2. Datasets Used
-   
-2.1 Enrolment Dataset
-
--> Source format: CSV (multiple files)
-
--> Loaded using folder-based ingestion
-
--> Contains enrolment-related counts and age metrics
-
-
-2.2 Demographic Dataset
-
--> Source format: CSV (multiple files)
-
--> Loaded using folder-based ingestion
-
--> Contains demographic and age-group statistics
-
-
-2.3 Biometric Dataset
-
--> Source format: CSV (multiple files)
-
--> Loaded using folder-based ingestion
-
--> Contains biometric and age-group counts
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-3.Tools Used
-
--> Power BI Desktop Used For Primary analytics and integration tool
-
--> Power Query Editor Used For Data cleaning, transformation, and merging
-
--> CSV Files	Are Raw data source format
-
--> Folder-based ingestion Used For Automated combination of multiple files
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-4. Data Organization Performed
-
-Before loading data, CSV files were organized into three folders:
-
--> api_data_aadhar_biometric
-
--> api_data_aadhar_demographic
-
--> api_data_aadhar_enrolment
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-5.Data Ingestion
-
-All CSV files in each folder were automatically combined into three tables:
-
--> Enrolment
-
--> Demographic
-
--> Biometric
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-6. Data Cleaning
-
-6.1 Date Formatting
-
--> Date columns converted using Change Type → Using Locale
-
--> Locale set to English (India)
-
-
-6.2 Location Standardization
-
-State and District columns cleaned using:
-
--> Trim
-
--> Capitalize Each Word
-
-
-6.3 Pincode Handling
-
--> Pincode columns converted to Text data type
-
--> Prevented incorrect numeric aggregation
-
-
-6.4 Null Value Handling
-
-All age and count columns had null values replaced with 0
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-7.Merge Keys Used
-
-The following columns were used as composite keys:
-
--> Date
-
--> State
-
--> District
-
--> Pincode
-
-
-7.1 Merge Operations
-
-1. Enrolment merged with Demographic using Left Outer Join
-Resulting intermediate table: Merge1
-
-2. Merge1 merged with Biometric using Left Outer Join
-Resulting table renamed as Master
-
-
-7.2 Post-Merge Cleanup
-
--> Expanded nested tables
-
--> Removed duplicate columns such as date.1, state.1
-
--> Disabled column name prefixing
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-8. Storage and Access
-
-All transformations are saved as (.pbix) format
-
-Data can be accessed via:
-
--> Power BI Data View
-
--> Export to CSV if required
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________
+**UIDAI Online Hackathon 2026 – Executive Summary**
+
+
+Project Title: Unlocking Societal Trends in Aadhaar Enrolment and Updates
+
+
+Team: UIDAI_9140 
+
+
+Institution: Agni College of Technology
+_________________________________________________________________________________________________________________________________________________________________________________________
+1. Objective
+The objective of this project is to analyze anonymised Aadhaar enrolment and update datasets provided
+by UIDAI to identify societal trends, patterns, anomalies, and actionable insights that can support
+data-driven decision-making and system improvements.
+_________________________________________________________________________________________________________________________________________________________________________________________
+2. Data & Tools
+Datasets used include Biometric, Demographic, and Enrolment master files, consolidated from multiple
+source files. The analysis was conducted using Python with pandas for data processing and matplotlib for
+visualizations.
+_________________________________________________________________________________________________________________________________________________________________________________________
+3. Methodology
+● Merged multiple files into clean master datasets for each domain.
+● Standardized date formats and derived year/month features.
+● Cleaned and normalized state and district names to ensure correct aggregation.
+● Validated data for duplicates, missing values, and logical consistency.
+● Performed national, state, and district-level exploratory analysis.
+_________________________________________________________________________________________________________________________________________________________________________________________
+4. Key Insights
+● Aadhaar enrolment shows significant regional variation across states and districts.
+● Certain age groups are under-represented in specific regions, indicating scope for targeted outreach.
+● Data standardization is critical for accurate nationwide analytics.
+● District-level analysis helps identify localized anomalies and intervention opportunities.
+_________________________________________________________________________________________________________________________________________________________________________________________
+5. Recommendations
+● Conduct focused enrolment drives in low-performing districts.
+● Strengthen geographic data standardization at the source level.
+● Use age-group trends to design inclusive enrolment campaigns.
+● Adopt dashboard-based monitoring for continuous oversight.
+_________________________________________________________________________________________________________________________________________________________________________________________
+6. Conclusion
+This project demonstrates how systematic data cleaning and analysis can uncover meaningful societal
+patterns in Aadhaar enrolment. The insights generated can help UIDAI enhance operational efficiency,
+data quality, and inclusive service delivery.
+
+__________________________________________________________________________________________________________________________________________________________________________________________
+This executive summary is part of the original submission for the UIDAI Online Hackathon 2026.
